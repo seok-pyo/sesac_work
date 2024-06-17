@@ -1,0 +1,98 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #333;
+  color: white;
+  overflow: hidden;
+  height: 100%;
+  font-family: monospace;
+}
+
+#everything {
+  display: flex;
+  height: 100%;
+}
+
+#diagram {
+  flex: 3 1 auto;
+  width: 70%;
+  user-select: none;
+  height: 100%;
+}
+
+.draggable {
+  position: absolute;
+  box-shadow: 2px 2px 15px #000;
+}
+
+.window-content {
+  max-height: 95vh;
+  overflow: auto;
+}
+
+#call-stack,
+.webgl-object {
+  display: inline-block;
+  padding: 10px;
+}
+
+.expander {
+  padding: 0.5em 0 0 0;
+}
+
+.expander.open {
+  background: rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5em;
+}
+
+/* .expander 클래스와 open 클래스를 가진 요소의 자식 요소 중에서 2번째 요소 이후에 적용이 된다.*/
+
+.expander > div:first-child::before {
+  content: '▶';
+  padding-right: 1em;
+}
+
+.expander.open > *:nth-child(0n + 2) {
+  display: initial;
+}
+
+.expander.open > div:first-child:before {
+  content: '▼';
+}
+
+.expander-name-line {
+  display: flex;
+}
+
+.expander-name {
+  flex: 1 1 auto;
+}
+
+.expander-content {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid hsla(0, 0%, 100%, 0.5);
+  padding: 0.25rem;
+  white-space: pre;
+}
+
+th {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 1200px) {
+  body {
+    font-size: x-small;
+  }
+}

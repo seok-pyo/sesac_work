@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Execution Context Diagram</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="draggable" style="left: 91px; top: 48px; z-index: 7">
+      <div id="call-stack" class="window-content">
+        <div class="name">Execution Context Stack</div>
+        <div class="expander">
+          <div class="expander-name-line">
+            <div class="expander-name">FunctionExcutionContext</div>
+          </div>
+          <div class="expander-content">
+            <div class="expander-content">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>lexicalEnvRec</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="expander">
+          <div class="expander-name-line">
+            <div class="expander-name">GlobalExcutionContext</div>
+          </div>
+          <div class="expander-content">
+            <div class="expander-content">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>lexicalEnvRec</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
