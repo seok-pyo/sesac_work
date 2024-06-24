@@ -1,6 +1,6 @@
 // range(start, end, step)
 
-function range(...args) {
+const range = (...args) => {
   let start = args[0];
   let end = args[1];
   let step = args[2];
@@ -33,7 +33,7 @@ function range(...args) {
       return Array.from({ length: Math.abs(start) }, (_, i) => start + i);
     }
   }
-}
+};
 
 console.log(range(0, 0));
 console.log(range(0, 0, 5));
