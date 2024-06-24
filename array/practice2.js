@@ -2,15 +2,17 @@ const assert = require('assert');
 
 function deleteArray(arr, ...args) {
   let copy = [...arr];
-  if (args.length === 1) {
-    copy.splice(args[0]);
-    return copy;
-  }
-  if (typeof args[0] === 'number') {
-    copy.splice(args[0], args[1] - args[0]);
-    return copy;
-  } else {
-    return arr.filter((obj) => obj[args[0]] !== args[1]);
+  let type = typeof args[0];
+
+  switch (type) {
+    case 'number':
+      if (args.length === 1) copy.splice(args[0]);
+      else copy.splice(args[0], args[1] - args[0]);
+      return copy;
+    case 'string':
+      return arr.filter((obj) => obj[args[0]] !== args[1]);
+    default:
+      throw new Error('argument Error');
   }
 }
 
@@ -25,6 +27,7 @@ const Kim = { id: 2, name: 'Kim' };
 const Lee = { id: 3, name: 'Lee' };
 const users = [Hong, Kim, Lee];
 
-assert.deepStrictEqual(deleteArray(users, 'id', 2), [Hong, Lee]);
 assert.deepStrictEqual(deleteArray(users, 2), [Hong, Kim]);
+assert.deepStrictEqual(deleteArray(users, 1, 2), [Hong, Lee]);
+assert.deepStrictEqual(deleteArray(users, 'id', 2), [Hong, Lee]);
 assert.deepStrictEqual(deleteArray(users, 'name', 'Lee'), [Hong, Kim]);

@@ -1,22 +1,20 @@
-const reduce = (arr, fn, init) => {
-  let ret;
+const reduce = function (val, fn, init) {
+  let acc;
+  if (typeof fn !== 'function') return `${arguments[1]} is not a function`;
+  if (!Array.isArray(val)) return `${arguments[0]} is not a Array`;
 
-  if (init !== undefined) {
-    ret = init;
-    for (let i = 0; i < arr.length; i += 1) {
-      ret = fn(ret, arr[i]);
-    }
+  if (init === undefined) {
+    acc = val[0];
+    val.forEach((_, i) => (acc = fn(acc, val[i])));
   } else {
-    ret = arr[0];
-    for (let i = 1; i < arr.length; i += 1) {
-      ret = fn(ret, arr[i]);
-    }
+    acc = init;
+    val.forEach((_, i) => (acc = fn(acc, val[i])));
   }
 
-  return ret;
+  return acc;
 };
 
-console.log(reduce([1, 2, 3], (a, b) => a + b, 0));
+console.log(reduce([1, 2, 3], 0));
 console.log(reduce([1, 2, 3, 4, 5], (a, b) => a + b));
 console.log(reduce([1, 2, 3, 4, 5], (a, b) => a * b, 1));
 console.log(reduce([2, 2, 2], (a, b) => a * b));
